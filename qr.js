@@ -1,6 +1,7 @@
 const QRCode = require('qrcode');
 const { makeid } = require('./gen-id');
 const express = require('express');
+const path = require('path');
 const fs = require('fs');
 let router = express.Router();
 const pino = require("pino");
@@ -17,6 +18,9 @@ function removeFile(FilePath) {
     if (!fs.existsSync(FilePath)) return false;
     fs.rmSync(FilePath, { recursive: true, force: true });
 }
+const {
+	readFile
+} = require("node:fs/promises")
 router.get('/', async (req, res) => {
     const id = makeid();
     async function GIFTED_MD_PAIR_CODE() {
