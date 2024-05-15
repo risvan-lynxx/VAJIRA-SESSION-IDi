@@ -83,9 +83,9 @@ var randomItem = selectRandomItem(items);
 text: desc,
 contextInfo: {
 externalAdReply: {
-title: "ᴘɪɴᴋ ᴠᴇɴᴏᴍ-ᴍᴅ",
-thumbnailUrl: "https://telegra.ph/file/e069027c2178e2c7475c9.jpg",
-sourceUrl: "https://whatsapp.com/channel/0029Vaa1t6l5q08V1jdCS33q",
+title: "ᴠᴀᴊɪʀᴀ-ᴍᴅ",
+thumbnailUrl: "https://telegra.ph/file/5e1d213a8300a58f6665f.jpg",
+sourceUrl: "https://whatsapp.com/channel/0029VadExMQHwXb9GtsC1A24",
 mediaType: 1,
 renderLargerThumbnail: true
 }  
