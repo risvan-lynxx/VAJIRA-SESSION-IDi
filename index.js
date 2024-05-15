@@ -7,10 +7,6 @@ let code = require('./pair');
 require('events').EventEmitter.defaultMaxListeners = 500;
 app.use('/code', code);
 
-app.use('/qr',async (req, res, next) => {
-res.sendFile(__path + '/qr.html')
-})
-
 app.use('/pair',async (req, res, next) => {
 res.sendFile(__path + '/pair.html')
 })
