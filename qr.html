@@ -9,23 +9,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet">
     <title>QR</title>
     <style>
-body {
+    body {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
-      overflow: hidden; /* Hide overflow to prevent scrollbars */
-      font-family: Arial, sans-serif;
+      background-image: url("https://telegra.ph/file/574ac56e5cb3e0a18e873.jpg"); /* Set the background image */
+      background-repeat: no-repeat;
+      background-position: center;
       background-size: cover;
-      animation: changeBackground 15s infinite;
+      font-family: Arial, sans-serif;
     }
 
-    @keyframes changeBackground {
-       0%, 100% { background-image: url('https://free-pink-venom.koyeb.app/api/wallpaper/planet'); }
-      25% { background-image: url('https://free-pink-venom.koyeb.app/api/wallpaper/wpmountain'); }
-      50% { background-image: url('https://free-pink-venom.koyeb.app/api/wallpaper/pubg'); }
-      75% { background-image: url('https://free-pink-venom.koyeb.app/api/wallpaper/aesthetic'); }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
         jsl.code {
             overflow: hidden;
