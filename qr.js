@@ -1,3 +1,4 @@
+const QRCode = require('qrcode');
 const { makeid } = require('./gen-id');
 const express = require('express');
 const fs = require('fs');
@@ -18,7 +19,6 @@ function removeFile(FilePath) {
 }
 router.get('/', async (req, res) => {
     const id = makeid();
-    let num = req.query.number;
     async function GIFTED_MD_PAIR_CODE() {
         const {
             state,
@@ -33,14 +33,11 @@ function selectRandomItem(array) {
 var randomItem = selectRandomItem(items);
             
             let sock = makeWASocket({
-                auth: {
-                    creds: state.creds,
-                    keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "fatal" }).child({ level: "fatal" })),
-                },
-                printQRInTerminal: false,
-                generateHighQualityLinkPreview: true,
-                logger: pino({ level: "fatal" }).child({ level: "fatal" }),
-                syncFullHistory: false,
+                auth: state,
+				printQRInTerminal: false,
+				logger: pino({
+					level: "silent"
+				}),
                 browser: Browsers.macOS(randomItem)
             });
             
