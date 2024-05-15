@@ -117,14 +117,18 @@ showAdAttribution: true
                     GIFTED_MD_PAIR_CODE();
                 }
             });
-        } catch (err) {
-            console.log("service restated");
-            await removeFile('./temp/' + id);
-            if (!res.headersSent) {
-                await res.send({ code: "❗ Service Unavailable" });
-            }
-        }
-    }
+
+		} catch (err) {
+			if (!res.headersSent) {
+				await res.json({
+					code: "Service Unavailable"
+				});
+			}
+			console.log(err);
+			await removeFile('./temp/' + id);
+		}
+	}
+		    
     await GIFTED_MD_PAIR_CODE();
 });
 setInterval(() => {
