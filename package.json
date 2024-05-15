@@ -9,7 +9,7 @@
      "restart": "pm2 restart prabath-md"
     },
   "dependencies": {
-    "@whiskeysockets/baileys": "npm:@neoxr/baileys",
+    "@whiskeysockets/baileys": "git+https://github.com/prabathLK/Baileys.git#master",
     "qrcode": "^1.5.3",
     "awesome-phonenumber": "^2.64.0",
     "pino": "^8.1.0",
