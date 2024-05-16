@@ -1,7 +1,6 @@
-const QRCode = require('qrcode');
 const { makeid } = require('./gen-id');
 const express = require('express');
-const path = require('path');
+const QRCode = require('qrcode');
 const fs = require('fs');
 let router = express.Router();
 const pino = require("pino");
@@ -18,11 +17,9 @@ function removeFile(FilePath) {
     if (!fs.existsSync(FilePath)) return false;
     fs.rmSync(FilePath, { recursive: true, force: true });
 }
-const {
-	readFile
-} = require("node:fs/promises")
 router.get('/', async (req, res) => {
     const id = makeid();
+ //   let num = req.query.number;
     async function GIFTED_MD_PAIR_CODE() {
         const {
             state,
@@ -37,26 +34,23 @@ function selectRandomItem(array) {
 var randomItem = selectRandomItem(items);
             
             let sock = makeWASocket({
-                auth: state,
+                	
+				auth: state,
 				printQRInTerminal: false,
 				logger: pino({
 					level: "silent"
 				}),
-                browser: Browsers.macOS(randomItem)
-            });
+				browser: Browsers.macOS("Desktop"),
+			});
             
             sock.ev.on('creds.update', saveCreds);
             sock.ev.on("connection.update", async (s) => {
                 const {
-					connection,
-					lastDisconnect,
-					qr
-				} = s;
-				if (qr) await res.end(await QRCode.toBuffer(qr));
-				/*if (connection == "open") {
-					await delay(5000);
-					
-					await delay(800);*/
+                    connection,
+                    lastDisconnect,
+                    qr
+                } = s;
+              if (qr) await res.end(await QRCode.toBuffer(qr));
                 if (connection == "open") {
                     await delay(5000);
                     let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
@@ -78,7 +72,7 @@ var randomItem = selectRandomItem(items);
                         const string_session = mega_url.replace('https://mega.nz/file/', '');
                         let md = "VAJIRA-MD=" + string_session;
                         let code = await sock.sendMessage(sock.user.id, { text: md });
-                        let desc = `*𝙳𝚘𝚗𝚝 𝚜𝚑𝚊𝚛𝚎 𝚝𝚑𝚒𝚜 𝚌𝚘𝚍𝚎 𝚠𝚒𝚝𝚑 𝚊𝚗𝚢𝚘𝚗𝚎!! 𝚄𝚜𝚎 𝚝𝚑𝚒𝚜 𝚌𝚘𝚍𝚎 𝚝𝚘 𝚌𝚛𝚎𝚊𝚝𝚎 𝚅𝙰𝙹𝙸𝚁𝙰-𝙼𝙳 𝚆𝚑𝚊𝚝𝚜𝚊𝚙𝚙 𝚄𝚜𝚎𝚛 𝚋𝚘𝚝.*\n\n ◦ *Github:* https://github.com/VajiraTech/VAJIRA-MD`;
+                        let desc = `*𝙳𝚘𝚗𝚝 𝚜𝚑𝚊𝚛𝚎 𝚝𝚑𝚒𝚜 𝚌𝚘𝚍𝚎 𝚠𝚒𝚝𝚑 𝚊𝚗𝚢𝚘𝚗𝚎!! 𝚄𝚜𝚎 𝚝𝚑𝚒𝚜 𝚌𝚘𝚍𝚎 𝚝𝚘 𝚌𝚛𝚎𝚊𝚝𝚎 𝙿𝚒𝚗𝚔𝚅𝚎𝚗𝚘𝚖-𝙼𝙳 𝚆𝚑𝚊𝚝𝚜𝚊𝚙𝚙 𝚄𝚜𝚎𝚛 𝚋𝚘𝚝.*\n\n ◦ *Github:* https://github.com/ayooh-us/Pink-Venom-MD`;
                         await sock.sendMessage(sock.user.id, {
 text: desc,
 contextInfo: {
@@ -94,7 +88,7 @@ renderLargerThumbnail: true
 {quoted:code })
                     } catch (e) {
                             let ddd = sock.sendMessage(sock.user.id, { text: e });
-                            let desc = `*𝙳𝚘𝚗𝚝 𝚜𝚑𝚊𝚛𝚎 𝚝𝚑𝚒𝚜 𝚌𝚘𝚍𝚎 𝚠𝚒𝚝𝚑 𝚊𝚗𝚢𝚘𝚗𝚎!! 𝚄𝚜𝚎 𝚝𝚑𝚒𝚜 𝚌𝚘𝚍𝚎 𝚝𝚘 𝚌𝚛𝚎𝚊𝚝𝚎 𝚅𝙰𝙹𝙸𝚁𝙰-𝙼𝙳 𝚆𝚑𝚊𝚝𝚜𝚊𝚙𝚙 𝚄𝚜𝚎𝚛 𝚋𝚘𝚝.*\n\n ◦ *Github:* https://github.com/ayooh-us/Pink-Venom-MD`;
+                            let desc = `*𝙳𝚘𝚗𝚝 𝚜𝚑𝚊𝚛𝚎 𝚝𝚑𝚒𝚜 𝚌𝚘𝚍𝚎 𝚠𝚒𝚝𝚑 𝚊𝚗𝚢𝚘𝚗𝚎!! 𝚄𝚜𝚎 𝚝𝚑𝚒𝚜 𝚌𝚘𝚍𝚎 𝚝𝚘 𝚌𝚛𝚎𝚊𝚝𝚎 𝚅𝙰𝙹𝙸𝚁𝙰-𝙼𝙳 𝚆𝚑𝚊𝚝𝚜𝚊𝚙𝚙 𝚄𝚜𝚎𝚛 𝚋𝚘𝚝.*\n\n ◦ *Github:* https://github.com/VajiraTech/VAJIRA-MD`;
                             await sock.sendMessage(sock.user.id, {
 text: desc,
 contextInfo: {
@@ -121,18 +115,14 @@ showAdAttribution: true
                     GIFTED_MD_PAIR_CODE();
                 }
             });
-
-		} catch (err) {
-			if (!res.headersSent) {
-				await res.json({
-					code: "Service Unavailable"
-				});
-			}
-			console.log(err);
-			await removeFile('./temp/' + id);
-		}
-	}
-		    
+        } catch (err) {
+            console.log("service restated");
+            await removeFile('./temp/' + id);
+            if (!res.headersSent) {
+                await res.send({ code: "❗ Service Unavailable" });
+            }
+        }
+    }
     await GIFTED_MD_PAIR_CODE();
 });
 setInterval(() => {
