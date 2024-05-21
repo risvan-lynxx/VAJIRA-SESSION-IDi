@@ -4,7 +4,7 @@ const fs = require('fs');
 let router = express.Router();
 const pino = require("pino");
 const {
-    default: sockConnect,
+    default: makeWASocket,
     useMultiFileAuthState,
     jidNormalizedUser,
     fetchLatestBaileysVersion,
