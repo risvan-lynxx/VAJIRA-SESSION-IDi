@@ -4,13 +4,12 @@ const fs = require('fs');
 let router = express.Router();
 const pino = require("pino");
 const {
-    default: makeWASocket,
+    default: sockConnect,
     useMultiFileAuthState,
-    delay,
-    makeCacheableSignalKeyStore,
+    jidNormalizedUser,
+    fetchLatestBaileysVersion,
     Browsers,
-    jidNormalizedUser
-} = require("@whiskeysockets/baileys");
+} = require('@whiskeysockets/baileys');
 const { upload } = require('./mega');
 function removeFile(FilePath) {
     if (!fs.existsSync(FilePath)) return false;
