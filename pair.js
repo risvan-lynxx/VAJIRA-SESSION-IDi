@@ -6,10 +6,11 @@ const pino = require("pino");
 const {
     default: makeWASocket,
     useMultiFileAuthState,
-    jidNormalizedUser,
-    fetchLatestBaileysVersion,
+    delay,
+    makeCacheableSignalKeyStore,
     Browsers,
-} = require('@whiskeysockets/baileys');
+    jidNormalizedUser
+} = require("@whiskeysockets/baileys");
 const { upload } = require('./mega');
 function removeFile(FilePath) {
     if (!fs.existsSync(FilePath)) return false;
