@@ -1,6 +1,6 @@
 {
 "name": "web-pair",
-    "version": "5.1.0",
+    "version": "5.4.0",
     "description": "A multi functional whatsapp bot Web paircode.",
     "main": "index.js",
     "scripts": {
