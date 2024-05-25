@@ -1,12 +1,12 @@
 {
 "name": "web-pair",
-    "version": "0.0.1",
+    "version": "5.1.0",
     "description": "A multi functional whatsapp bot Web paircode.",
     "main": "index.js",
     "scripts": {
-      "start": "pm2 start index.js --deep-monitoring --attach --name prabath-md",
-      "stop": "pm2 stop prabath-md",
-     "restart": "pm2 restart prabath-md"
+      "start": "pm2 start index.js --deep-monitoring --attach --name vajira",
+      "stop": "pm2 stop vajira",
+     "restart": "pm2 restart vajira"
     },
   "dependencies": {
     "@whiskeysockets/baileys": "^github:WhiskeySockets/Baileys",             
