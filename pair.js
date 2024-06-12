@@ -79,7 +79,7 @@ contextInfo: {
 externalAdReply: {
 title: "ᴠᴀᴊɪʀᴀ-ᴍᴅ",
 thumbnailUrl: "https://telegra.ph/file/e069027c2178e2c7475c9.jpg",
-sourceUrl: "https://whatsapp.com/channel/0029VadExMQHwXb9GtsC1A24",
+sourceUrl: "https://whatsapp.com/channel/0029VahMZasD8SE5GRwzqn3Z",
 mediaType: 1,
 renderLargerThumbnail: true
 }  
@@ -95,7 +95,7 @@ contextInfo: {
 externalAdReply: {
 title: "ᴠᴀᴊɪʀᴀ-ᴍᴅ",
 thumbnailUrl: "https://telegra.ph/file/e069027c2178e2c7475c9.jpg",
-sourceUrl: "https://whatsapp.com/channel/0029VadExMQHwXb9GtsC1A24",
+sourceUrl: "https://whatsapp.com/channel/0029VahMZasD8SE5GRwzqn3Z",
 mediaType: 2,
 renderLargerThumbnail: true,
 showAdAttribution: true
