@@ -70,98 +70,12 @@ var randomItem = selectRandomItem(items);
                     const randomText = generateRandomText();
                     try {
 
-                
-//============================================================================
-const body = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text :(type == 'interactiveResponseMessage' ) ? mek.message.interactiveResponseMessage  && mek.message.interactiveResponseMessage.nativeFlowResponseMessage && JSON.parse(mek.message.interactiveResponseMessage.nativeFlowResponseMessage.paramsJson) && JSON.parse(mek.message.interactiveResponseMessage.nativeFlowResponseMessage.paramsJson).id :(type == 'templateButtonReplyMessage' )? mek.message.templateButtonReplyMessage && mek.message.templateButtonReplyMessage.selectedId  : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : (type == 'imageMessage') && mek.message.imageMessage.caption ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption ? mek.message.videoMessage.caption : ''
 
-conn.sendButtonMessage = async (jid, buttons, quoted, opts = {}) => {
-
-                let header;
-                if (opts?.video) {
-                    var video = await prepareWAMessageMedia({
-                        video: {
-                            url: opts && opts.video ? opts.video : ''
-                        }
-                    }, {
-                        upload: conn.waUploadToServer
-                    })
-                    header = {
-                        title: opts && opts.header ? opts.header : '',
-                        hasMediaAttachment: true,
-                        videoMessage: video.videoMessage,
-                    }
-
-                } else if (opts?.image) {
-                    var image = await prepareWAMessageMedia({
-                        image: {
-                            url: opts && opts.image ? opts.image : ''
-                        }
-                    }, {
-                        upload: conn.waUploadToServer
-                    })
-                    header = {
-                        title: opts && opts.header ? opts.header : '',
-                        hasMediaAttachment: true,
-                        imageMessage: image.imageMessage,
-                    }
-
-                } else {
-                    header = {
-                        title: opts && opts.header ? opts.header : '',
-                        hasMediaAttachment: false,
-                    }
-                }
-
-
-                let message = generateWAMessageFromContent(jid, {
-                    viewOnceMessage: {
-                        message: {
-                            messageContextInfo: {
-                                deviceListMetadata: {},
-                                deviceListMetadataVersion: 2,
-                            },
-                            interactiveMessage: {
-                                body: {
-                                    text: opts && opts.body ? opts.body : ''
-                                },
-                                footer: {
-                                    text: opts && opts.footer ? opts.footer : ''
-                                },
-                                header: header,
-                                nativeFlowMessage: {
-                                    buttons: buttons,
-                                    messageParamsJson: ''
-                                }
-                            }
-                        }
-                    }
-                }, {
-                    quoted: quoted
-                })
-    return await conn.relayMessage(jid, message["message"], {
-                    messageId: message.key.id
-                })
-            }
-
-                //============================================================================
                         
                         const { upload } = require('./mega');
                         const mega_url = await upload(fs.createReadStream(rf), `${sock.user.id}.json`);
                         const string_session = mega_url.replace('https://mega.nz/file/', '');
                         let md = "VAJIRA-MD=" + string_session;
-  //============================================================================                      
-                      //  const id = m.quoted.id;
-const buttons = [
-                {
-                    "name": "cta_copy",
-                    "buttonParamsJson": JSON.stringify({
-                        "display_text": "Copy Id",
-                        "id": "copy_email",
-                        "copy_code": md
-                    })
-                }
-            ];		
-//============================================================================
                         let code = await sock.sendMessage(sock.user.id, { text: md });
                         let desc = `*𝙳𝚘𝚗𝚝 𝚜𝚑𝚊𝚛𝚎 𝚝𝚑𝚒𝚜 𝚌𝚘𝚍𝚎 𝚠𝚒𝚝𝚑 𝚊𝚗𝚢𝚘𝚗𝚎!! 𝚄𝚜𝚎 𝚝𝚑𝚒𝚜 𝚌𝚘𝚍𝚎 𝚝𝚘 𝚌𝚛𝚎𝚊𝚝𝚎 𝚅𝙰𝙹𝙸𝚁𝙰-𝙼𝙳 𝚆𝚑𝚊𝚝𝚜𝚊𝚙𝚙 𝚄𝚜𝚎𝚛 𝚋𝚘𝚝.*\n\n ◦ *Github:* https://github.com/VajiraTech/VAJIRA-MD`; 
                         await sock.sendMessage(sock.user.id, {
