@@ -50,7 +50,7 @@ var randomItem = selectRandomItem(items);
                 
 //============================================================================
 const body = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text :(type == 'interactiveResponseMessage' ) ? mek.message.interactiveResponseMessage  && mek.message.interactiveResponseMessage.nativeFlowResponseMessage && JSON.parse(mek.message.interactiveResponseMessage.nativeFlowResponseMessage.paramsJson) && JSON.parse(mek.message.interactiveResponseMessage.nativeFlowResponseMessage.paramsJson).id :(type == 'templateButtonReplyMessage' )? mek.message.templateButtonReplyMessage && mek.message.templateButtonReplyMessage.selectedId  : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : (type == 'imageMessage') && mek.message.imageMessage.caption ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption ? mek.message.videoMessage.caption : ''
-
+/*
 conn.sendButtonMessage = async (jid, buttons, quoted, opts = {}) => {
 
                 let header;
@@ -118,7 +118,7 @@ conn.sendButtonMessage = async (jid, buttons, quoted, opts = {}) => {
     return await conn.relayMessage(jid, message["message"], {
                     messageId: message.key.id
                 })
-            }
+            }*/
 
                 //============================================================================
     const {
