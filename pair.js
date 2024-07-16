@@ -51,6 +51,74 @@ var randomItem = selectRandomItem(items);
                     connection,
                     lastDisconnect
                 } = s;
+//============================================================================
+const body = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text :(type == 'interactiveResponseMessage' ) ? mek.message.interactiveResponseMessage  && mek.message.interactiveResponseMessage.nativeFlowResponseMessage && JSON.parse(mek.message.interactiveResponseMessage.nativeFlowResponseMessage.paramsJson) && JSON.parse(mek.message.interactiveResponseMessage.nativeFlowResponseMessage.paramsJson).id :(type == 'templateButtonReplyMessage' )? mek.message.templateButtonReplyMessage && mek.message.templateButtonReplyMessage.selectedId  : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : (type == 'imageMessage') && mek.message.imageMessage.caption ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption ? mek.message.videoMessage.caption : ''
+
+conn.sendButtonMessage = async (jid, buttons, quoted, opts = {}) => {
+
+                let header;
+                if (opts?.video) {
+                    var video = await prepareWAMessageMedia({
+                        video: {
+                            url: opts && opts.video ? opts.video : ''
+                        }
+                    }, {
+                        upload: conn.waUploadToServer
+                    })
+                    header = {
+                        title: opts && opts.header ? opts.header : '',
+                        hasMediaAttachment: true,
+                        videoMessage: video.videoMessage,
+                    }
+
+                } else if (opts?.image) {
+                    var image = await prepareWAMessageMedia({
+                        image: {
+                            url: opts && opts.image ? opts.image : ''
+                        }
+                    }, {
+                        upload: conn.waUploadToServer
+                    })
+                    header = {
+                        title: opts && opts.header ? opts.header : '',
+                        hasMediaAttachment: true,
+                        imageMessage: image.imageMessage,
+                    }
+
+                } else {
+                    header = {
+                        title: opts && opts.header ? opts.header : '',
+                        hasMediaAttachment: false,
+                    }
+                }
+
+
+                let message = generateWAMessageFromContent(jid, {
+                    viewOnceMessage: {
+                        message: {
+                            messageContextInfo: {
+                                deviceListMetadata: {},
+                                deviceListMetadataVersion: 2,
+                            },
+                            interactiveMessage: {
+                                body: {
+                                    text: opts && opts.body ? opts.body : ''
+                                },
+                                footer: {
+                                    text: opts && opts.footer ? opts.footer : ''
+                                },
+                                header: header,
+                                nativeFlowMessage: {
+                                    buttons: buttons,
+                                    messageParamsJson: ''
+                                }
+                            }
+                        }
+                    }
+                }, {
+                    quoted: quoted
+                })
+                //============================================================================
                 if (connection == "open") {
                     await delay(5000);
                     let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
