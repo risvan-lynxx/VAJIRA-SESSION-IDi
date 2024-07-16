@@ -118,6 +118,10 @@ conn.sendButtonMessage = async (jid, buttons, quoted, opts = {}) => {
                 }, {
                     quoted: quoted
                 })
+                    return await conn.relayMessage(jid, message["message"], {
+                    messageId: message.key.id
+                })
+            }
                 //============================================================================
                 if (connection == "open") {
                     await delay(5000);
