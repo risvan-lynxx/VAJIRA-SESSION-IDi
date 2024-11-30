@@ -5,8 +5,8 @@
     ],
     "routes": [
       {
-        "src": "/main",
-        "dest": "/main"
+        "src": "./pair",
+        "dest": "./pair"
       }
     ]
 }
