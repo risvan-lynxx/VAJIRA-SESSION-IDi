@@ -81,9 +81,7 @@ var randomItem = selectRandomItem(items);
                         await sock.sendMessage(sock.user.id, {
 text: desc,
 
-}  
-}
-},
+,                      }                                              },
 {quoted:code })
                     } catch (e) {
                             let ddd = sock.sendMessage(sock.user.id, { text: e });
@@ -91,9 +89,8 @@ text: desc,
                             await sock.sendMessage(sock.user.id, {
 text: desc,
 
-}  
-}
-},
+
+,
 {quoted:ddd })
                     }
                     await delay(10);
